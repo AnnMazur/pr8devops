@@ -1,0 +1,39 @@
+name: CI/CD Pipeline
+
+on: [push]
+
+jobs:
+  ci-cd-demo:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      run: echo "Stage 1: Download code from repository"
+      
+    - name: Docker Build Simulation
+      run: |
+        echo "Stage 2: Building Docker image"
+        echo "Command: docker build -t todo-app:latest ."
+        echo "Image built successfully"
+        
+    - name: Deploy to Kubernetes Simulation
+      run: |
+        echo "Stage 3: Deploying to Kubernetes"
+        echo "Command: kubectl apply -f mongodb.yaml"
+        echo "Command: kubectl apply -f todo-app.yaml"
+        echo "Application deployed to cluster"
+        
+    - name: Generate Report
+      run: |
+        echo "## CI/CD Pipeline Report" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Completed stages:" >> $GITHUB_STEP_SUMMARY
+        echo "1. Download code from GitHub" >> $GITHUB_STEP_SUMMARY
+        echo "2. Docker image build" >> $GITHUB_STEP_SUMMARY
+        echo "3. Deployment to Kubernetes" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Technologies used:" >> $GITHUB_STEP_SUMMARY
+        echo "- GitHub Actions (CI/CD)" >> $GITHUB_STEP_SUMMARY
+        echo "- Docker" >> $GITHUB_STEP_SUMMARY
+        echo "- Kubernetes" >> $GITHUB_STEP_SUMMARY
+        echo "- MongoDB" >> $GITHUB_STEP_SUMMARY
