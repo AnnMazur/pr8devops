@@ -1,0 +1,30 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  ci-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1 - Checkout
+        run: |
+          echo "Code checkout simulation"
+          echo "This would use: actions/checkout@v3"
+      
+      - name: Step 2 - Build
+        run: |
+          echo "Docker build simulation"
+          echo "Command: docker build -t todo-app ."
+      
+      - name: Step 3 - Deploy
+        run: |
+          echo "Kubernetes deployment simulation"
+          echo "kubectl apply -f mongodb.yaml"
+          echo "kubectl apply -f todo-app.yaml"
+      
+      - name: Step 4 - Report
+        run: |
+          echo "CI/CD pipeline completed successfully"
+          echo "All stages simulated: checkout, build, deploy"
